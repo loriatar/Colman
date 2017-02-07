@@ -1,0 +1,176 @@
+/*------------------------------
+=BASIC SETUP
+------------------------------*/
+
+/* Makeshift CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: myFirstFont;
+    color: #03309c;
+}
+@font-face {
+    font-family: myFirstFont;
+    src: url(/fonts/junction-regular.woff);
+    font-weight: 500;
+}
+
+body {
+    margin: 0 auto;
+    font: 13px/22px Helvetica, Arial, sans-serif;
+    background: #F0F0F0;
+}
+
+h1 {
+    font-size: 40px;
+    line-height: 3%;
+    nav-right: auto;
+    padding: 20px;
+    text-shadow: 3px 3px #DDDDDD
+}
+
+h3 {
+    font-size: 18px;
+    line-height: 22px;
+    padding: 11px 0;
+    color: #03309c;
+}
+
+
+/*------------------------------
+=NAVIGATION
+------------------------------*/
+
+nav ul {
+    margin: 0 auto;
+    width: 80%;
+
+}
+
+nav ul li a {
+    display: flex;
+    margin-right: 20px;
+    width: 140%;
+    font-size: 15px;
+    line-height: 44px;
+    text-align: center;
+    text-decoration: none;
+}
+
+
+/*------------------------------
+=INTRODUCTION
+------------------------------*/
+
+#intro {
+    position: relative;
+    margin-top: 66px;
+    padding: 44px;
+}
+
+
+#intro img {
+    position: absolute;
+    top: 0;
+    left: 2%;
+    width: 70%;
+    height: 300%;
+
+    /* Border-radius not implemented yet */
+    -moz-border-radius: 22px;
+    -webkit-border-radius: 22px;
+}
+
+
+/*------------------------------
+=CONTENT AREA AND SIDEBAR LAYOUT
+------------------------------*/
+
+/*------------------------------
+=CONTENT AREA
+------------------------------*/
+
+aside {
+    position: fixed;
+    top:15.8%;
+    left:84%;
+    right:0;
+    bottom:0;
+    text-align: center;
+    background: white;
+    color: #7f7375;
+}
+
+#mainContent p {
+    margin-top: 15%;
+   color: red;
+}
+/*------------------------------
+=SIDEBAR
+------------------------------*/
+aside section {
+    margin: 22px 0 0 22px;
+    padding: 11px 22px;
+    /* Border-radius not implemented yet */
+    -moz-border-radius: 11px;
+    -webkit-border-radius: 11px;
+}
+
+aside section ul {
+    margin: 0 0 0 22px;
+    list-style: none;
+}
+
+aside section ul li a {
+    display: block;
+    text-decoration: none;
+}
+
+aside section ul li a:hover {
+    text-decoration: underline;
+}
+
+/*------------------------------
+=FOOTER
+------------------------------*/
+footer {
+    position: fixed;
+    height: 25%;
+    left: 0;
+    width: 100%;
+    background:lightgray;
+    bottom: 0;
+}
+
+footer div {
+    display: table;
+    margin: 0 auto;
+    padding: 30px 0;
+    width: 90%;
+    color: dimgray;
+}
+
+footer div section {
+    display: table-cell;
+    width: 350px;
+}
+
+footer h3 {
+    color: white;
+}
+
+footer a {
+    color: #03309c;
+}
+
+footer a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+footer ul {
+    margin: 0;
+    padding: 0;
+    list-style: square;
+}
+
