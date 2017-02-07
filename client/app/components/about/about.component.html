@@ -1,0 +1,27 @@
+<div class="About">
+   <h1>This is about page!</h1>
+</div>
+<script type='text/javascript' src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap' async defer></script>
+<script type="text/javascript">
+    function GetMap()
+    {
+        var map = new Microsoft.Maps.Map('#myMap', {
+            credentials: 'Am_TaBTvt8df33MwwU4PcF8wBF56bxCVisy5SaOcFvcVSp2rYw0G-d1e6nGDSNUm'});
+    }
+</script>
+
+<canvas id="myCanvas" width="430" height="70" style="border:0px;">
+   Your browser does not support the HTML5 canvas tag.
+</canvas>
+<script>
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    ctx.font = "35px Arial";
+    ctx.strokeText("Welcome to Shauli's Blog!",5,40);
+</script>
+<p>
+   In my blog you will find Authors and Fans from all over the world! <br/>
+   In the following map, you might find the some pins which represent some of our fans location:
+</p>
+<div id="myMap" style='position:relative;width:600px;height:400px;'>Map</div>
+<br/>

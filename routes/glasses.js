@@ -17,7 +17,10 @@ router.get('/glasses', function(req, res, next){
 router.get('/glasses/:id', function(req, res, next){
     db.glasses.findOne({_id: mongojs.ObjectID(req.params.id)},function(err,glasses) {
         if(err) {
-            res.send(err);
+            res.status(400);
+            res.json({
+                "error": "Bad Data"
+            });
         }
         res.json(glasses);
     });
