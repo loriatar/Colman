@@ -17,7 +17,8 @@ var GlassesService = (function () {
         console.log('Glasses service initialized...');
     }
     GlassesService.prototype.getGlasses = function () {
-        return this.http.get('http://localhost:8080/api/glasses').map(function (res) { return res.json(); });
+        return this.http.get('http://localhost:8080/api/glasses')
+            .map(function (res) { return res.json(); });
     };
     GlassesService.prototype.addGlasses = function (newGlasses) {
         var headers = new http_1.Headers();
@@ -27,16 +28,19 @@ var GlassesService = (function () {
     };
     GlassesService.prototype.deleteGlasses = function (id) {
         console.log("delete glasses " + id);
-        return this.http.delete('http://localhost:8080/api/glasses/' + id).map(function (res) { return res.json(); });
+        return this.http.delete('http://localhost:8080/api/glasses/' + id)
+            .map(function (res) { return res.json(); });
     };
     GlassesService.prototype.updateGlasses = function (updatedGlasses) {
         var headers = new http_1.Headers();
+        console.log("update glasses " + updatedGlasses._id);
         headers.append('Content-Type', 'application/json');
         return this.http.put('http://localhost:8080/api/glasses/' + updatedGlasses._id, JSON.stringify(updatedGlasses), { headers: headers })
             .map(function (res) { return res.json(); });
     };
     GlassesService.prototype.getGlassesByBrand = function () {
-        return this.http.get('http://localhost:8080/api/glassesbybrand').map(function (res) { return res.json(); });
+        return this.http.get('http://localhost:8080/api/glassesbybrand')
+            .map(function (res) { return res.json(); });
     };
     return GlassesService;
 }());

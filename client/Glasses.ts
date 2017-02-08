@@ -1,7 +1,8 @@
 export class Glasses{
     amount: number;
     brand: string;
-    image: string;
+    imageURL: string;
     serial: string;
     type: string;
+    price: number;
 }

@@ -54,7 +54,6 @@ nav ul li a {
     font-size: 15px;
     line-height: 44px;
     text-align: center;
-    text-decoration: none;
 }
 
 
@@ -123,7 +122,6 @@ aside section ul {
 
 aside section ul li a {
     display: block;
-    text-decoration: none;
 }
 
 aside section ul li a:hover {

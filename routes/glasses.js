@@ -57,7 +57,7 @@ router.post('/glasses',function(req,res,next) {
 
 // Delete glasses
 router.delete('/glasses/:id', function(req, res, next){
-    db.glasses.remove({_id: mongojs.ObjectID(req.params.id)},function(err,glasses) {
+    db.glasses.remove({_id: mongojs.ObjectId(req.params.id)},function(err,glasses) {
         if(err) {
             res.send(err);
         }
@@ -68,14 +68,20 @@ router.delete('/glasses/:id', function(req, res, next){
 // Update glasses
 router.put('/glasses/:id', function(req, res, next){
     var glasses = req.body;
-    var updateGlasses = {};
-    if(!updateGlasses){
+    // var updatedGlasses = {};
+    // updatedGlasses.brand = glasses.brand;
+    // updatedGlasses.serial = glasses.serial;
+    // updatedGlasses.price = glasses.price;
+    // updatedGlasses.amount = glasses.amount;
+    // updatedGlasses.type = glasses.type;
+    // updatedGlasses.imageURL = glasses.imageURL;
+    if(!glasses){
         res.status(400);
         res.json({
             "error": "Bad Data"
         });
     } else{
-        db.glasses.update({_id: mongojs.ObjectID(req.params.id)},updateGlasses,{},function(err,glasses) {
+        db.glasses.update({_id: mongojs.ObjectID(req.params.id)},glasses,{},function(err,glasses) {
             if(err) {
                 res.send(err);
             }

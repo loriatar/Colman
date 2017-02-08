@@ -14,9 +14,17 @@ var GlassesComponent = (function () {
     function GlassesComponent(glassesService) {
         var _this = this;
         this.glassesService = glassesService;
+        this.editGrid = false;
+        this.showFilter = false;
+        // Initialize glasses array
         this.glassesService.getGlasses()
             .subscribe(function (glasses) {
             _this.glasses = glasses;
+        });
+        // Initialize glasses array grouped by their brand
+        this.glassesService.getGlassesByBrand()
+            .subscribe(function (glasses) {
+            _this.glassesByBrand = glasses;
         });
     }
     GlassesComponent.prototype.addGlasses = function (event) {
@@ -33,12 +41,7 @@ var GlassesComponent = (function () {
         this.glassesService.addGlasses(newGlasses)
             .subscribe(function (glasses) {
             _this.glasses.push(glasses);
-            _this.brand = '';
-            _this.imageURL = '';
-            _this.type = '';
-            _this.serial = '';
-            _this.price = 0;
-            _this.amount = 0;
+            _this.restorePlaceHolders();
         });
     };
     GlassesComponent.prototype.deleteGlasses = function (id) {
@@ -56,22 +59,64 @@ var GlassesComponent = (function () {
     GlassesComponent.prototype.updateGlasses = function (glasses) {
         var _glasses = {
             _id: glasses._id,
-            brand: glasses.brand,
-            serial: glasses.serial,
-            type: glasses.type,
-            amount: glasses.amount,
-            price: glasses.price,
+            brand: this.brand,
+            serial: this.serial,
+            type: this.type,
+            amount: this.amount,
+            imageURL: this.imageURL,
+            price: this.price,
         };
         this.glassesService.updateGlasses(_glasses).subscribe(function (data) {
-            glasses.brand = "loritest";
+            glasses.brand = _glasses.brand;
+            glasses.serial = _glasses.serial;
+            glasses.type = _glasses.type;
+            glasses.amount = _glasses.amount;
+            glasses.imageURL = _glasses.imageURL;
+            glasses.price = _glasses.price;
         });
+        this.restorePlaceHolders();
     };
     GlassesComponent.prototype.getGlassesByBrand = function () {
         var _this = this;
         this.glassesService.getGlassesByBrand().subscribe(function (glasses) {
             _this.glassesByBrand = glasses;
-            console.log(_this.glassesByBrand);
         });
+    };
+    GlassesComponent.prototype.switchEditMode = function (id) {
+        if (this.editGrid == true) {
+            this.restorePlaceHolders();
+        }
+        else {
+            this.editGrid = true;
+            for (var i = 0; i < this.glasses.length; i++) {
+                if (this.glasses[i]._id == id) {
+                    // Get the selected item
+                    this.selectedItem = this.glasses[i];
+                    // Get all the product's info into the form
+                    this.brand = this.glasses[i].brand;
+                    this.imageURL = this.glasses[i].imageURL;
+                    this.type = this.glasses[i].type;
+                    this.serial = this.glasses[i].serial;
+                    this.price = this.glasses[i].price;
+                    this.amount = this.glasses[i].amount;
+                }
+            }
+        }
+    };
+    GlassesComponent.prototype.showFilterForm = function () {
+        this.showFilter = !this.showFilter;
+    };
+    GlassesComponent.prototype.filterGlasses = function () {
+    };
+    GlassesComponent.prototype.restorePlaceHolders = function () {
+        // Set the placeholder's values back
+        this.editGrid = false;
+        this.brand = '';
+        this.imageURL = '';
+        this.type = '';
+        this.serial = '';
+        this.price = null;
+        this.amount = null;
     };
     return GlassesComponent;
 }());

@@ -9,7 +9,8 @@ export class GlassesService{
     }
 
     getGlasses(){
-        return this.http.get('http://localhost:8080/api/glasses').map(res => res.json());
+        return this.http.get('http://localhost:8080/api/glasses')
+            .map(res => res.json());
     }
 
     addGlasses(newGlasses){
@@ -21,17 +22,20 @@ export class GlassesService{
 
     deleteGlasses(id){
         console.log("delete glasses " + id );
-        return this.http.delete('http://localhost:8080/api/glasses/'+id).map(res => res.json());
+        return this.http.delete('http://localhost:8080/api/glasses/'+id)
+            .map(res => res.json());
     }
 
     updateGlasses(updatedGlasses){
         var headers = new Headers();
+        console.log("update glasses " + updatedGlasses._id );
         headers.append('Content-Type','application/json');
         return this.http.put('http://localhost:8080/api/glasses/'+updatedGlasses._id,JSON.stringify(updatedGlasses),{headers})
             .map(res => res.json());
     }
 
     getGlassesByBrand() {
-        return this.http.get('http://localhost:8080/api/glassesbybrand').map(res => res.json());
+        return this.http.get('http://localhost:8080/api/glassesbybrand')
+            .map(res => res.json());
     }
 }

@@ -1,6 +1,25 @@
 <h1>Glasses</h1>
 <hr/>
-<div id="products" class="row list-group">
+<input type="button" (click)="showFilterForm()" value="Show filter" class="btn btn-primary">
+<div>
+    <form *ngIf=showFilter>
+        <div class="form-group">
+            <div class="col-xs-4">
+                <input type="text" [(ngModel)]="brand" name="brand" class="form-control" placeholder="brand"><br>
+                <input type="text" [(ngModel)]="serial" name="serial" class="form-control" placeholder="serial"><br>
+                <input type="text" [(ngModel)]="type" name="type" class="form-control" placeholder="type"><br>
+                <input type="text" [(ngModel)]="amount" name="amount" class="form-control" placeholder="amount"><br>
+                <input type="text" [(ngModel)]="price" name="price" class="form-control" placeholder="price"><br>
+            </div>
+        </div>
+        <div>
+            <input type="button" (click)="filterGlasses()" value="Search" class="btn btn-success">
+        </div>
+    </form>
+</div>
+
+
+<div id="products" class="row list-group" ng-app="">
     <div *ngFor="let glass of glasses" class="item  col-xs-4 col-lg-4">
         <div class="thumbnail">
             <img class="group grid-group-image" src={{glass.imageURL}} alt="" />
@@ -15,7 +34,7 @@
                             Price: {{glass.price}}$</p>
                     </div>
                     <div class="col-xs-12 col-md-6">
-                        <input type="button" (click)="updateGlasses(glass._id)" value="Edit" class="btn btn-success">
+                        <input type="button" (click)="switchEditMode(glass._id)" value="Edit" class="btn btn-success">
                         <input type="button" (click)="deleteGlasses(glass._id)" value="Delete" class="btn btn-danger">
                     </div>
                 </div>
@@ -36,29 +55,8 @@
         </div>
     </div>
     <div>
-        <input type="button" (click)="addGlasses($event)" value="Add new glasses!" class="btn btn-success">
+        <input type="button" *ngIf=!editGrid (click)="addGlasses($event)" value="Add new glasses!" class="btn btn-success">
+        <input type="button" *ngIf=editGrid (click)="updateGlasses(selectedItem)" value="Save" class="btn btn-success">
+        <input type="button" *ngIf=editGrid (click)="switchEditMode(0)" value="Undo" class="btn btn-danger">
     </div>
 </form>
-
-<table class="table">
-    <tr *ngFor="let glass of glassesByBrand">
-        <th>
-           {{glass._id}}
-        </th>
-        <th>
-            {{glass.count}}
-        </th>
-    </tr>
-</table>
-
-<div *ngFor="let glass of glassesByBrand" class="item  col-xs-4 col-lg-4">
-    <div class="thumbnail">
-        <img class="group grid-group-image" src={{glass.imageURL}} alt="" />
-        <div class="caption">
-            <h4 class="group inner list-group-item-heading">
-                Brand: {{glass._id}}</h4>
-            <p class="group inner list-group-item-text">
-                Count: {{glass.count}}</p>
-        </div>
-    </div>
-</div>
