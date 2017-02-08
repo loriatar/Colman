@@ -1,26 +1,23 @@
 <h1>Glasses</h1>
 <hr/>
-<input type="button" (click)="showFilterForm()" value="Show filter" class="btn btn-primary">
+<input type="button" (click)="showFilterForm()" value="Show search" class="btn btn-primary">
 <div>
     <form *ngIf=showFilter>
         <div class="form-group">
             <div class="col-xs-4">
-                <input type="text" [(ngModel)]="brand" name="brand" class="form-control" placeholder="brand"><br>
-                <input type="text" [(ngModel)]="serial" name="serial" class="form-control" placeholder="serial"><br>
-                <input type="text" [(ngModel)]="type" name="type" class="form-control" placeholder="type"><br>
-                <input type="text" [(ngModel)]="amount" name="amount" class="form-control" placeholder="amount"><br>
-                <input type="text" [(ngModel)]="price" name="price" class="form-control" placeholder="price"><br>
+                <input type="text" [(ngModel)]="filterBrand" name="brand" class="form-control" placeholder="brand"><br>
+
             </div>
         </div>
         <div>
-            <input type="button" (click)="filterGlasses()" value="Search" class="btn btn-success">
+            <input type="button" value="Search" class="btn btn-success">
         </div>
     </form>
 </div>
 
 
 <div id="products" class="row list-group" ng-app="">
-    <div *ngFor="let glass of glasses" class="item  col-xs-4 col-lg-4">
+    <div *ngFor="let glass of glasses | filter: filterBrand" class="item col-xs-4 col-lg-4">
         <div class="thumbnail">
             <img class="group grid-group-image" src={{glass.imageURL}} alt="" />
             <div class="caption">

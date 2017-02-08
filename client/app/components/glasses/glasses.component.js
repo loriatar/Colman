@@ -16,6 +16,7 @@ var GlassesComponent = (function () {
         this.glassesService = glassesService;
         this.editGrid = false;
         this.showFilter = false;
+        this.filterBrand = "";
         // Initialize glasses array
         this.glassesService.getGlasses()
             .subscribe(function (glasses) {
@@ -27,6 +28,14 @@ var GlassesComponent = (function () {
             _this.glassesByBrand = glasses;
         });
     }
+    GlassesComponent.prototype.getAllGlasses = function () {
+        var _this = this;
+        this.glassesService.getGlasses()
+            .subscribe(function (glasses) {
+            _this.glasses = glasses;
+        });
+        return this.glasses;
+    };
     GlassesComponent.prototype.addGlasses = function (event) {
         var _this = this;
         event.preventDefault();
@@ -105,8 +114,6 @@ var GlassesComponent = (function () {
     };
     GlassesComponent.prototype.showFilterForm = function () {
         this.showFilter = !this.showFilter;
-    };
-    GlassesComponent.prototype.filterGlasses = function () {
     };
     GlassesComponent.prototype.restorePlaceHolders = function () {
         // Set the placeholder's values back

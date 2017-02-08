@@ -30,6 +30,7 @@ export class GlassesComponent {
     constructor(private glassesService:GlassesService){
         this.editGrid = false;
         this.showFilter = false;
+        this.filterBrand = "";
         // Initialize glasses array
         this.glassesService.getGlasses()
             .subscribe(glasses => {
@@ -40,6 +41,14 @@ export class GlassesComponent {
             .subscribe(glasses => {
                 this.glassesByBrand = glasses;
             });
+    }
+
+    getAllGlasses() {
+        this.glassesService.getGlasses()
+            .subscribe(glasses => {
+                this.glasses = glasses;
+            });
+        return this.glasses;
     }
 
     addGlasses(event){
@@ -124,10 +133,6 @@ export class GlassesComponent {
 
     showFilterForm(){
         this.showFilter = !this.showFilter;
-    }
-
-    filterGlasses() {
-
     }
 
     restorePlaceHolders() {
