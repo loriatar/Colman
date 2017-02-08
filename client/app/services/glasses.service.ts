@@ -30,4 +30,8 @@ export class GlassesService{
         return this.http.put('http://localhost:8080/api/glasses/'+updatedGlasses._id,JSON.stringify(updatedGlasses),{headers})
             .map(res => res.json());
     }
+
+    getGlassesByBrand() {
+        return this.http.get('http://localhost:8080/api/glassesbybrand').map(res => res.json());
+    }
 }

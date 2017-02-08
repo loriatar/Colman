@@ -13,6 +13,17 @@ router.get('/glasses', function(req, res, next){
     });
 });
 
+// Get glasses grouped by their brand
+router.get('/glassesbybrand', function(req, res, next){
+    console.log("glassesgroupby");
+    db.glasses.aggregate([{$group:{_id:"$brand",count:{$sum:1}}}],function (err,glasses) {
+        if(err) {
+            res.send(err);
+        }
+        res.json(glasses);
+    });
+});
+
 // Get single glasses
 router.get('/glasses/:id', function(req, res, next){
     db.glasses.findOne({_id: mongojs.ObjectID(req.params.id)},function(err,glasses) {
@@ -58,15 +69,6 @@ router.delete('/glasses/:id', function(req, res, next){
 router.put('/glasses/:id', function(req, res, next){
     var glasses = req.body;
     var updateGlasses = {};
-    // if(glasses.amount){
-    //     updateGlasses.amount = glasses.amount;
-    // }
-    // if(glasses.image){
-    //     updateGlasses.image = glasses.image;
-    // }
-    // if(glasses.price){
-    //     updateGlasses.price = glasses.price;
-    // }
     if(!updateGlasses){
         res.status(400);
         res.json({

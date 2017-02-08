@@ -11,7 +11,7 @@ var about_component_1 = require("./components/about/about.component");
 var glasses_component_1 = require("./components/glasses/glasses.component");
 var stores_component_1 = require("./components/stores/stores.component");
 var routes = [
-    { path: '', pathMatch: 'full', redirectTo: 'about' },
+    { path: '', pathMatch: 'full', redirectTo: 'glasses' },
     { path: 'about', component: about_component_1.AboutComponent },
     { path: 'glasses', component: glasses_component_1.GlassesComponent },
     { path: 'stores', component: stores_component_1.StoresComponent },

@@ -185,6 +185,7 @@ footer ul {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     border-radius: 0;
+    color: dodgerblue;
 }
 
 .item.list-group-item
@@ -196,7 +197,7 @@ footer ul {
 }
 .item.list-group-item:nth-of-type(odd):hover,.item.list-group-item:hover
 {
-    background: #428bca;
+    background: #ca1216;
 }
 
 .item.list-group-item .list-group-image

@@ -1,58 +1,64 @@
-<div class="container">
-    <div class="well well-sm">
-        <strong>Display</strong>
-        <div class="btn-group">
-            <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
-            </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
-                class="glyphicon glyphicon-th"></span>Grid</a>
-        </div>
-    </div>
-    <h1>Glasses</h1>
-    <hr/>
-    <div *ngFor="let glass of glasses">
-        <div id="products" class="row list-group">
-            <div class="item  col-xs-4 col-lg-4">
-                <div class="thumbnail">
-                    <img class="group list-group-image" src={{glass.imageURL}} alt="" />
-                    <div class="caption">
-                        <h4 class="group inner list-group-item-heading">
-                            Brand: {{glass.brand}}</h4>
-                        <p class="group inner list-group-item-text">
-                            Serial: {{glass.serial}} , Amount in stock: {{glass.amount}}</p>
-                        <div class="row">
-                            <div class="col-xs-12 col-md-6">
-                                <p class="lead">
-                                    Price: {{glass.price}}$</p>
-                            </div>
-                            <div class="col-xs-12 col-md-6">
-                                <input type="button" (click)="updateGlasses(glass._id)" value="Edit" class="btn btn-success">
-                                <input type="button" (click)="deleteGlasses(glass._id)" value="Delete" class="btn btn-danger">
-                            </div>
-                        </div>
+<h1>Glasses</h1>
+<hr/>
+<div id="products" class="row list-group">
+    <div *ngFor="let glass of glasses" class="item  col-xs-4 col-lg-4">
+        <div class="thumbnail">
+            <img class="group grid-group-image" src={{glass.imageURL}} alt="" />
+            <div class="caption">
+                <h4 class="group inner list-group-item-heading">
+                    Brand: {{glass.brand}}</h4>
+                <p class="group inner list-group-item-text">
+                    Serial: {{glass.serial}} , Amount in stock: {{glass.amount}}</p>
+                <div class="row">
+                    <div class="col-xs-12 col-md-6">
+                        <p class="lead">
+                            Price: {{glass.price}}$</p>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <input type="button" (click)="updateGlasses(glass._id)" value="Edit" class="btn btn-success">
+                        <input type="button" (click)="deleteGlasses(glass._id)" value="Delete" class="btn btn-danger">
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
-    $(document).ready(function() {
-        $('#list').click(function(event){event.preventDefault();$('#products .item').addClass('list-group-item');});
-        $('#grid').click(function(event){event.preventDefault();$('#products .item').removeClass('list-group-item');$('#products .item').addClass('grid-group-item');});
-    });
-</script>
+
 <form>
     <div class="form-group">
         <div class="col-xs-4">
-            <input type="text" [(ngModel)]="brand" name="brand" class="form-control" placeholder="brand">
-            <input type="text" [(ngModel)]="serial" name="serial" class="form-control" placeholder="serial">
-            <input type="text" [(ngModel)]="type" name="type" class="form-control" placeholder="type">
-            <input type="text" [(ngModel)]="imageURL" name="imageURL" class="form-control" placeholder="imageURL">
-            <input type="text" [(ngModel)]="amount" name="amount" class="form-control" placeholder="amount">
-            <input type="text" [(ngModel)]="price" name="price" class="form-control" placeholder="price">
+            <input type="text" [(ngModel)]="brand" name="brand" class="form-control" placeholder="brand"><br>
+            <input type="text" [(ngModel)]="serial" name="serial" class="form-control" placeholder="serial"><br>
+            <input type="text" [(ngModel)]="type" name="type" class="form-control" placeholder="type"><br>
+            <input type="text" [(ngModel)]="imageURL" name="imageURL" class="form-control" placeholder="imageURL"><br>
+            <input type="text" [(ngModel)]="amount" name="amount" class="form-control" placeholder="amount"><br>
+            <input type="text" [(ngModel)]="price" name="price" class="form-control" placeholder="price"><br>
         </div>
     </div>
     <div>
         <input type="button" (click)="addGlasses($event)" value="Add new glasses!" class="btn btn-success">
     </div>
 </form>
+
+<table class="table">
+    <tr *ngFor="let glass of glassesByBrand">
+        <th>
+           {{glass._id}}
+        </th>
+        <th>
+            {{glass.count}}
+        </th>
+    </tr>
+</table>
+
+<div *ngFor="let glass of glassesByBrand" class="item  col-xs-4 col-lg-4">
+    <div class="thumbnail">
+        <img class="group grid-group-image" src={{glass.imageURL}} alt="" />
+        <div class="caption">
+            <h4 class="group inner list-group-item-heading">
+                Brand: {{glass._id}}</h4>
+            <p class="group inner list-group-item-text">
+                Count: {{glass.count}}</p>
+        </div>
+    </div>
+</div>

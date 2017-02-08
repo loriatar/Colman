@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
-import {GlassesService} from '../../services/glasses.service'
-import {Glasses} from '../../../Glasses'
+import {GlassesService} from '../../services/glasses.service';
+import {Glasses} from '../../../Glasses';
+import {GlassesByBrand} from '../../../GlassesByBrand';
 
 @Component({
     moduleId: module.id,
@@ -10,6 +11,7 @@ import {Glasses} from '../../../Glasses'
 
 export class GlassesComponent {
     glasses: Glasses[];
+    glassesByBrand: GlassesByBrand[];
     brand: string;
     serial: string;
     type: string;
@@ -70,6 +72,13 @@ export class GlassesComponent {
         };
         this.glassesService.updateGlasses(_glasses).subscribe(data => {
             glasses.brand = "loritest"
+        });
+    }
+
+    getGlassesByBrand(){
+        this.glassesService.getGlassesByBrand().subscribe(glasses => {
+            this.glassesByBrand = glasses;
+            console.log(this.glassesByBrand);
         });
     }
 }

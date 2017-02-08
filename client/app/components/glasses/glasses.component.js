@@ -66,6 +66,13 @@ var GlassesComponent = (function () {
             glasses.brand = "loritest";
         });
     };
+    GlassesComponent.prototype.getGlassesByBrand = function () {
+        var _this = this;
+        this.glassesService.getGlassesByBrand().subscribe(function (glasses) {
+            _this.glassesByBrand = glasses;
+            console.log(_this.glassesByBrand);
+        });
+    };
     return GlassesComponent;
 }());
 GlassesComponent = __decorate([

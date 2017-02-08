@@ -35,6 +35,9 @@ var GlassesService = (function () {
         return this.http.put('http://localhost:8080/api/glasses/' + updatedGlasses._id, JSON.stringify(updatedGlasses), { headers: headers })
             .map(function (res) { return res.json(); });
     };
+    GlassesService.prototype.getGlassesByBrand = function () {
+        return this.http.get('http://localhost:8080/api/glassesbybrand').map(function (res) { return res.json(); });
+    };
     return GlassesService;
 }());
 GlassesService = __decorate([
