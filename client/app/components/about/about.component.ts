@@ -9,7 +9,7 @@ import {GlassesService} from '../../services/glasses.service'
 })
 
 export class AboutComponent{
-    //glassesByBrand: GlassesByBrand[];
+    glassesByBrand: GlassesByBrand[];
 
     constructor(private glassesService:GlassesService){
         // Initialize glasses array grouped by their brand

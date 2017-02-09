@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var glasses_service_1 = require("../../services/glasses.service");
 var AboutComponent = (function () {
-    //glassesByBrand: GlassesByBrand[];
     function AboutComponent(glassesService) {
         var _this = this;
         this.glassesService = glassesService;
