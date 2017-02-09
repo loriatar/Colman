@@ -1,0 +1,83 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+
+    <style type="text/css">
+
+        #share-buttons img {
+            width: 35px;
+            padding: 5px;
+            border: 0;
+            box-shadow: 0;
+            display: inline;
+        }
+
+    </style>
+
+    <meta http- equiv="Content-Type" content="text/html; charset=windows-1251">
+    <title>Example Of Posting To Wall Using Javascript Graph API</title>
+    <script type="text/javascript" src=""></script>
+    <script>
+
+        //include facebook api sdk
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        //init facebook api with my facebook app
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '390978481274294',
+                xfbml: true,
+                version: 'v2.8'
+            }),
+                FB.getLoginStatus(function (response) {
+                    if (response.status === 'connected') {
+                        alert(response.authResponse.accessToken);
+                        console.log('Logged in.');
+                    }
+                    else {
+                        FB.login(function (response) {
+                            if (response.status === 'connected') {
+                                alert(response.authResponse.accessToken);
+                                console.log('Logged in.');
+                            }
+                        });
+                    }
+                });
+            ;
+            FB.AppEvents.logPageView();
+        };
+
+        //function to share website
+        function postToFeed() {
+            FB.ui({
+                method: 'feed',
+                link: 'http://ynet.co.il',
+                caption: 'Hi, i just used the coolest website!!!',
+                picture: "http://farm9.staticflickr.com/8496/8278663662_76d408c166_h.jpg",
+                // name: "name",
+                // description: "description"
+            }, function (response) {
+            });
+        }
+    </script>
+</head>
+<body>
+<div id='fb-root'></div>
+<div>
+    <p>
+        <a href="javascript:;" onclick='postToFeed(); return false;' target="_blank" >
+            <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook"/>
+        </a>
+    </p>
+</div>
+
+</body>
+</html>

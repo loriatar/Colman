@@ -21,7 +21,8 @@
     <!-- Custom Style  -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVP0G0b1K3UZ_w8BY4nC5038lCYk2PgPs" async defer></script>
-   <!-- 2. Configure SystemJS -->
+
+    <!-- 2. Configure SystemJS -->
     <script src="systemjs.config.js"></script>
     <script>
         System.import('app').catch(function(err){ console.error(err); });
@@ -33,12 +34,6 @@
         <my-app>Loading...</my-app>
     </body>
 <script>
-    function loadCanvas() {
-        var c = document.getElementById("myCanvas");
-        var ctx = c.getContext("2d");
-        ctx.font = "38px Arial";
-        ctx.strokeText("Welcome to our OpticStore!",10,50);
-    }
 </script>
 
 </html>

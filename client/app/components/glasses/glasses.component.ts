@@ -22,10 +22,10 @@ export class GlassesComponent {
     price: number;
     imageURL: string;
     filterBrand: string;
-    filterSerial: string;
-    filterType: string;
     filterAmount: number;
     filterPrice: number;
+    // filterSerial: string;
+    // filterType: string;
 
     constructor(private glassesService:GlassesService){
         this.editGrid = false;

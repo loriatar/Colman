@@ -6,27 +6,86 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
-var FilterArrayPipe = (function () {
-    function FilterArrayPipe() {
+var FilterGlassesPipe = (function () {
+    function FilterGlassesPipe() {
     }
-    FilterArrayPipe.prototype.transform = function (glasses, args) {
-        if (!args[0]) {
+    FilterGlassesPipe.prototype.transform = function (glasses, brand, price, amount) {
+        var a, p, keyValue;
+        if (!brand && !price && !amount) {
             return glasses;
         }
         else if (glasses) {
             return glasses.filter(function (item) {
+                a = parseInt(amount);
+                p = parseInt(price);
                 for (var key in item) {
-                    if ((typeof item[key] === 'string' || item[key] instanceof String) && (item[key].includes(args))) {
-                        return true;
+                    if ((typeof item[key] === 'string' || item[key] instanceof String)) {
+                        if (key === 'brand' && !item[key].includes(brand)) {
+                            return false;
+                        }
+                        if (key === 'amount') {
+                            keyValue = parseInt(item[key]);
+                            if (keyValue < a) {
+                                return false;
+                            }
+                        }
+                        if (key === 'price') {
+                            keyValue = parseInt(item[key]);
+                            if (keyValue < p) {
+                                return false;
+                            }
+                        }
                     }
                 }
+                return true;
             });
         }
     };
-    return FilterArrayPipe;
+    return FilterGlassesPipe;
 }());
-FilterArrayPipe = __decorate([
-    core_1.Pipe({ name: 'filter' })
-], FilterArrayPipe);
-exports.FilterArrayPipe = FilterArrayPipe;
+FilterGlassesPipe = __decorate([
+    core_1.Pipe({ name: 'filterGlasses' })
+], FilterGlassesPipe);
+exports.FilterGlassesPipe = FilterGlassesPipe;
+var FilterStoresPipe = (function () {
+    function FilterStoresPipe() {
+    }
+    FilterStoresPipe.prototype.transform = function (stores, city, name, productsInStock) {
+        var num, keyValue;
+        if (!city && !name && !productsInStock) {
+            return stores;
+        }
+        else if (stores) {
+            return stores.filter(function (item) {
+                num = parseInt(productsInStock);
+                for (var key in item) {
+                    if ((typeof item[key] === 'string' || item[key] instanceof String)) {
+                        if (key === 'city' && !item[key].includes(city)) {
+                            console.log("city: " + item[key] + " key: " + key);
+                            return false;
+                        }
+                        if (key === 'productsInStock') {
+                            keyValue = parseInt(item[key]);
+                            if (keyValue < num) {
+                                console.log("productsInStock: " + item[key] + " key: " + key);
+                                return false;
+                            }
+                        }
+                        if (key === 'name' && !item[key].includes(name)) {
+                            console.log("name: " + item[key] + " key: " + key);
+                            return false;
+                        }
+                    }
+                }
+                console.log(item[key] + "  " + key);
+                return true;
+            });
+        }
+    };
+    return FilterStoresPipe;
+}());
+FilterStoresPipe = __decorate([
+    core_1.Pipe({ name: 'filterStores' })
+], FilterStoresPipe);
+exports.FilterStoresPipe = FilterStoresPipe;
 //# sourceMappingURL=filter.pipe.js.map

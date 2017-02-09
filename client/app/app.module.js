@@ -22,7 +22,7 @@ var AppModule = (function () {
 AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, app_routing_1.AppRoutingModule, http_1.HttpModule, forms_1.FormsModule, router_1.RouterModule],
-        declarations: [app_component_1.AppComponent, glasses_component_1.GlassesComponent, app_routing_1.routingComponents, filter_pipe_1.FilterArrayPipe],
+        declarations: [app_component_1.AppComponent, glasses_component_1.GlassesComponent, app_routing_1.routingComponents, filter_pipe_1.FilterGlassesPipe, filter_pipe_1.FilterStoresPipe],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

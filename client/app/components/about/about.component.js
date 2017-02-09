@@ -20,6 +20,12 @@ var AboutComponent = (function () {
             _this.glassesByBrand = glasses;
         });
     }
+    AboutComponent.prototype.ngOnInit = function () {
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        ctx.font = "35px Arial";
+        ctx.strokeText("Welcome to our OpticStore!", 5, 40);
+    };
     return AboutComponent;
 }());
 AboutComponent = __decorate([

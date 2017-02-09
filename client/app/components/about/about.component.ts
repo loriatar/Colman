@@ -1,4 +1,4 @@
-import {Component, AfterViewInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {GlassesByBrand} from '../../../GlassesByBrand'
 import {GlassesService} from '../../services/glasses.service'
 
@@ -18,18 +18,10 @@ export class AboutComponent{
                 this.glassesByBrand = glasses;
             });
     }
-
-    // @ViewChild("myCanvas") myCanvas;
-    // ngAfterViewInit() {
-    //     let canvas = this.myCanvas.nativeElement;
-    //     this.context = canvas.getContext("2d");
-    //     this.tick();
-    // }
-    // tick() {
-    //         var ctx = this.context;
-    //         ctx.fillStyle = this.rectColor;
-    //         ctx.fillRect(0, 0, 430, 70);
-    //         ctx.font = "35px Arial";
-    //         ctx.strokeText("Welcome to our Optic Store!",5,40);
-    // }
+    ngOnInit() {
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        ctx.font = "35px Arial";
+        ctx.strokeText("Welcome to our OpticStore!",5,40);
+    }
 }
