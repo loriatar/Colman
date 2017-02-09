@@ -29,10 +29,17 @@ export class StoresComponent{
                 latitude: 40
             },
             {
-                name: "OpticStore",
+                name: "OpticForU",
                 city: "Yafo",
                 productsInStock:200,
                 longitude: 43,
+                latitude: 40
+            },
+            {
+                name: "Opticana",
+                city: "Bat Yam",
+                productsInStock:180,
+                longitude: 47,
                 latitude: 40
             }
         ];

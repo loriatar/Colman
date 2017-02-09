@@ -48,24 +48,22 @@ export class FilterStoresPipe {
                 num = parseInt(productsInStock);
                 for(let key in item) {
                     if((typeof item[key] === 'string' || item[key] instanceof String)) {
-                        if(key === 'city' && !item[key].includes(city)) {
-                            console.log("city: " + item[key] + " key: " + key);
+                        if(city && key === 'city' && !item[key].includes(city)) {
                             return false;
                         }
-                        if(key === 'productsInStock') {
-                            keyValue = parseInt(item[key]);
-                            if(keyValue < num) {
-                                console.log("productsInStock: " + item[key]+ " key: " + key);
-                                return false;
-                            }
-                        }
-                        if(key === 'name' && !item[key].includes(name)) {
-                            console.log("name: " + item[key]+ " key: " + key);
+                        if(name && key === 'name' && !item[key].includes(name)) {
                             return false;
                         }
                     }
+                    else if((typeof item[key] === 'number' || item[key] instanceof number)) {
+                        if(key === 'productsInStock') {
+                            keyValue = parseInt(item[key]);
+                            if(keyValue < num) {
+                                return false;
+                            }
+                        }
+                    }
                 }
-                console.log(item[key] +"  "+key);
                 return true;
             });
         }

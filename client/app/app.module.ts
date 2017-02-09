@@ -7,11 +7,12 @@ import {AppRoutingModule, routingComponents} from './app.routing';
 import {AppComponent} from './app.component';
 import {FilterGlassesPipe,FilterStoresPipe} from './filter.pipe'
 import {GlassesComponent} from './components/glasses/glasses.component';
-
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
     imports: [BrowserModule, AppRoutingModule, HttpModule, FormsModule, RouterModule],
     declarations: [AppComponent, GlassesComponent, routingComponents, FilterGlassesPipe,FilterStoresPipe],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
 })
 export class AppModule { }

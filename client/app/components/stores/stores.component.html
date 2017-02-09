@@ -2,6 +2,7 @@
 <p>As you can see, we have many stores around the world:</p>
 <div id="googleMap" style="width:500px;height:380px;"></div>
 <hr>
+
 <div id="stores" class="row list-group" ng-app="">
     <div *ngFor="let store of stores | filterStores: filterCity:filterName:productsInStock" class="item col-xs-4 col-lg-4">
         <div class="thumbnail">
@@ -22,17 +23,18 @@
         </div>
     </div>
 </div>
-
-
-<input type="button" (click)="showFilterForm()" value="Show search" class="btn btn-primary">
+<hr>
 <div>
     <form *ngIf=showFilter>
         <div class="form-group">
             <div class="col-xs-4">
-                <input type="text" [(ngModel)]="filterName" name="brand" class="form-control" placeholder="name"><br>
-                <input type="text" [(ngModel)]="filterCity" name="price" class="form-control" placeholder="city"><br>
-                <input type="text" [(ngModel)]="productsInStock" name="amount" class="form-control" placeholder="products in stock"><br>
+                <input type="text" [(ngModel)]="filterName" name="name" class="form-control" placeholder="name"><br>
+                <input type="text" [(ngModel)]="filterCity" name="city" class="form-control" placeholder="city"><br>
+                <input type="text" [(ngModel)]="productsInStock" name="productsInStock" class="form-control" placeholder="products in stock"><br>
             </div>
         </div>
     </form>
 </div>
+<input type="button" (click)="showFilterForm()" value="Show search" class="btn btn-primary">
+
+

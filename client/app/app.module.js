@@ -14,6 +14,7 @@ var app_routing_1 = require("./app.routing");
 var app_component_1 = require("./app.component");
 var filter_pipe_1 = require("./filter.pipe");
 var glasses_component_1 = require("./components/glasses/glasses.component");
+var common_1 = require("@angular/common");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -23,7 +24,8 @@ AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, app_routing_1.AppRoutingModule, http_1.HttpModule, forms_1.FormsModule, router_1.RouterModule],
         declarations: [app_component_1.AppComponent, glasses_component_1.GlassesComponent, app_routing_1.routingComponents, filter_pipe_1.FilterGlassesPipe, filter_pipe_1.FilterStoresPipe],
-        bootstrap: [app_component_1.AppComponent]
+        bootstrap: [app_component_1.AppComponent],
+        providers: [{ provide: common_1.LocationStrategy, useClass: common_1.HashLocationStrategy }],
     })
 ], AppModule);
 exports.AppModule = AppModule;
